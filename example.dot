@@ -1,0 +1,6 @@
+graph {
+	// node [style=filled]; node [fillcolor=red]; label="blah"
+
+	one -- two
+
+}
