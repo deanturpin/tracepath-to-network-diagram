@@ -6,16 +6,23 @@ mapfile lines < trace.txt
 # Header
 echo 'graph {'
 
-ip+=("me")
+# Create array for IPs
+IPs=()
 
 # Extract IPs
 for line in ${lines[*]}; do
 
-	[[ $line =~ [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} ]] && echo -n "\"${BASH_REMATCH[0]}\" -- " 
-
+	[[ $line =~ [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} ]] && IPs+=("\"${BASH_REMATCH[0]}\"")
 done
 
-echo "end"
+# For each pair of IPs create a connection
+for (( i = 0; i < ${#IPs} - 1; ++i )); do
+
+	now=${IPs[i]}
+	next=${IPs[i + 1]}
+
+	echo -e "\t$now -- $next"
+done
 
 # Footer
 echo '}'
