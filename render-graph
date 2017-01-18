@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Extract IPs and filter duplicates
-mapfile lines < trace.txt
+mapfile lines
 
 # Header
 echo 'graph {'

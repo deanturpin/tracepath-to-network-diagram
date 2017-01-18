@@ -1,0 +1,9 @@
+#!/bin/bash
+
+[[ $# == 0 ]] && echo "Usage $0 <list of IPs>" && exit
+
+for ip in $*; do 
+
+	maxhops=10
+	tracepath -n -m $maxhops $ip
+done
