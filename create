@@ -1,15 +1,21 @@
 #!/bin/bash
 
 # Extract IPs and filter duplicates
-mapfile lines < <(cat trace.txt  | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | uniq)
+mapfile lines < trace.txt
 
 # Header
 echo 'graph {'
 
-for ip in ${lines[*]}; do
+ip+=("me")
 
-	echo -e "\t\"$ip\""
+# Extract IPs
+for line in ${lines[*]}; do
+
+	[[ $line =~ [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} ]] && echo -n "\"${BASH_REMATCH[0]}\" -- " 
+
 done
+
+echo "end"
 
 # Footer
 echo '}'
