@@ -5,6 +5,7 @@
 
 # Render graph
 ```bash
+./render-graph < trace.txt | dot -Tsvg  > blah.svg && firefox blah.svg
 ```
 
 # Dependencies
