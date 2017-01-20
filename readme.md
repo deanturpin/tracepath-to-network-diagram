@@ -12,3 +12,26 @@
 ```bash
 sudo apt install graphviz
 ```
+
+# Todo
+This would be cool...
+
+```
+    + two -|
+    |
+    |
+one-|
+    |
+    |        +------
+    |        |
+    |        |
+    |        |
+    + three -|
+	           |
+	           |
+	           |
+	           |
+	           |
+	           |
+						 +------
+```
