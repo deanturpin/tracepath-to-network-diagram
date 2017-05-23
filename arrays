@@ -1,0 +1,24 @@
+#!/bin/bash
+
+declare -A arraysorarrays
+default_list=()
+default_list+=("one")
+default_list+=("two")
+
+echo length of default ${#default_list[*]}
+
+hosts=(192.168.109.1 github.com)
+
+# Initialise associative array
+for host in ${hosts[*]}; do 
+
+	arraysorarrays[$host]=$default_list
+done
+
+# Dump sub arrays
+for host in ${!arraysorarrays[*]}; do
+
+	echo $host
+
+	for ip in ${arraysorarrays[$host][*]}; do echo -e \\t$ip; done
+done
